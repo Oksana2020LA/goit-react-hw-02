@@ -1,32 +1,15 @@
-import css from './Options.module.css'
-export default function Options({
-	updateFeedback,
-	totalFeedback,
-	resetFeedback,
-}) {
-	const handleFeedback = type => {
-		updateFeedback(type)
-	}
+import React from 'react'
+import css from './Options.module.css';
 
-	const handleReset = () => {
-		resetFeedback()
-	}
-	return (
-		<div className={css.container}>
-			<button className={css.button} onClick={() => handleFeedback('good')}>
-				Good
-			</button>
-			<button className={css.button} onClick={() => handleFeedback('neutral')}>
-				Neutral
-			</button>
-			<button className={css.button} onClick={() => handleFeedback('bad')}>
-				Bad
-			</button>
-			{totalFeedback > 0 && (
-				<button className={css.button} onClick={handleReset}>
-					Reset
-				</button>
-			)}
-		</div>
-	)
+const Options = ({ updateFeedback, totalFeedback, resetFeedback }) => {
+  return (
+    <div className={css.options}>
+      <button className={css.button} type="button" onClick={() => updateFeedback('good')}>Good</button>
+      <button className={css.button} type="button" onClick={() => updateFeedback('neutral')}>Neutral</button>
+      <button className={css.button} type="button" onClick={() => updateFeedback('bad')}>Bad</button>
+      {totalFeedback > 0 && <button className={css.button} type="button" onClick={resetFeedback}>Reset</button>}
+    </div>
+  );
 }
+
+export default Options
